@@ -2,31 +2,36 @@
 {
 	internal class Program
 	{
-		public class EqualRowColumnPairs
-		{
-			public int EqualPairs(int[][] grid)
-			{
-				HashSet<string> set = new();
-				for (int r = 0; r < grid.Length; ++r)
-				{
-					set.Add(string.Join(", ", grid[r]));
-				}
-				int equalPairs = 0;
-				for (int c = 0; c < grid[0].Length; ++c)
-				{
-					string colStr = string.Join(", ", grid[c]);
-					if (set.Contains(colStr))
-					{
-						++equalPairs;
-					}
-				}
-				return equalPairs;
-			}
-		}
-
 		static void Main(string[] args)
 		{
-			Console.WriteLine("Hello, World!");
+			EqualRowColumnPairsHashMap equalRowColumnPairs = new();
+            Console.WriteLine(equalRowColumnPairs.EqualPairs(new int[][]
+			{
+				new int[] { 3, 2, 1 },
+				new int[] { 1, 7, 6 },
+				new int[] { 2, 7, 7 }
+			}));
+			Console.WriteLine(equalRowColumnPairs.EqualPairs(new int[][]
+			{
+				new int[] { 3, 1, 2, 2 },
+				new int[] { 1, 4, 4, 5 },
+				new int[] { 2, 4, 2, 2 },
+				new int[] { 2, 4, 2, 2 }
+			}));
+			EqualRowColumnPairsTrie equalRowColumnPairsTrie = new();
+			Console.WriteLine(equalRowColumnPairsTrie.EqualPairs(new int[][]
+			{
+				new int[] { 3, 2, 1 },
+				new int[] { 1, 7, 6 },
+				new int[] { 2, 7, 7 }
+			}));
+			Console.WriteLine(equalRowColumnPairsTrie.EqualPairs(new int[][]
+			{
+				new int[] { 3, 1, 2, 2 },
+				new int[] { 1, 4, 4, 5 },
+				new int[] { 2, 4, 2, 2 },
+				new int[] { 2, 4, 2, 2 }
+			}));
 		}
 	}
 }
